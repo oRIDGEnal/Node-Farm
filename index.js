@@ -2,31 +2,31 @@ const fs = require("fs");
 const http = require("http");
 const url = require("url");
 const slugify = require("slugify");
-const replaceTemp = require("./starter/js_modules/replaceTemp");
+const replaceTemp = require("./assets/js_modules/replaceTemp");
 
 ///////////////////////////////////////////////
 // Server
 ///////////////////////////////////////////////
 
 // READFILES
-const tempOverviewPath = `${__dirname}/starter/templates/template-overview.html`;
+const tempOverviewPath = `${__dirname}/assets/templates/template-overview.html`;
 const tempOverviewBuffer = fs.readFileSync(tempOverviewPath);
 const tempOverview = tempOverviewBuffer.toString(); // Convert Buffer to string
 
-const tempProductPath = `${__dirname}/starter/templates/template-product.html`;
+const tempProductPath = `${__dirname}/assets/templates/template-product.html`;
 const tempProductBuffer = fs.readFileSync(tempProductPath);
 const tempProduct = tempProductBuffer.toString(); // Convert Buffer to string
 
-const tempCardPath = `${__dirname}/starter/templates/template-card.html`;
+const tempCardPath = `${__dirname}/assets/templates/template-card.html`;
 const tempCardBuffer = fs.readFileSync(tempCardPath);
 const tempCard = tempCardBuffer.toString(); // Convert Buffer to string
 
-const data = fs.readFileSync(`${__dirname}/starter/dev-data/data.json`);
+const data = fs.readFileSync(`${__dirname}/assets/dev-data/data.json`);
 const dataObj = JSON.parse(data);
 
 const slugs = dataObj.map((el) => slugify(el.productName, { lower: true }));
 
-console.log(slugs);
+// console.log(slugs);
 
 // STARTING OF SERVER
 const server = http.createServer((req, res) => {
